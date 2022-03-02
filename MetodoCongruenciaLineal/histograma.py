@@ -6,9 +6,13 @@ import matplotlib.pyplot as plt
 def main():
     arraySize=10000
     #hacer arreglo
-    arreglo =[random.randint(0,10) for i in range(arraySize)]
+    datos =[random.random() for i in range(arraySize)]
 
-    plt.hist(arreglo,bins=11)
+    histograma(datos)
+
+def histograma(data):
+    print("enrto")
+    plt.hist(data,bins=11)
     plt.show()
 
 main()
