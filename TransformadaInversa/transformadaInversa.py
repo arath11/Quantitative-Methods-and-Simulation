@@ -9,15 +9,15 @@ import numpy
 def main():
     arraySize=10000
     datos =[random.random() for i in range(arraySize)]
-    datos=[.73,.23]
     segunda=[]
+    lambd=1
     for i in range(len(datos)-1):
-        #sqrt(-2Ln*U1)*cos(2*pi*U2)
-        segunda.append(math.sqrt(-2*numpy.log(datos[i]))*math.cos(2*math.pi*datos[i+1]))
-        #sqrt(-2Ln*U1)*sin(2*pi*U2)
-        segunda.append(math.sqrt(-2*numpy.log(datos[i]))*math.sin(2*math.pi*datos[i+1]))
-
-    histograma(segunda,11)    
+        #queremos exponencial asi que usamos la cdf que es la inversa de la exponencial 
+        #sacamos la inversa de (1-e^-lambda*x) y da
+        #x=-1/lambda*ln(1-y)
+        datos[i]=-1/lambd*numpy.log(1-datos[i])
+    
+    histograma(datos,100)    
 
 def histograma(arreglo,b:int):
     #llenar los datos en el histograma
